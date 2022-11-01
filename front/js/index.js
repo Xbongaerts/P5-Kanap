@@ -4,11 +4,12 @@ let nodeMainHTML = document.querySelector(".items")
 
 //Fonction fetch allant chercher les infos
 
-function getData(){
-  fetch("http://localhost:3000/api/products")
+function getData(){ 
+  fetch("http://localhost:3000/api/products") //<- ici on on vient chercher le data sur le localhost
   .then((res) => res.json())
   .then((data) => {
-    for(let i = 0; i< data.length; i ++){
+    for(let i = 0; i< data.length; i ++){ // <- lancement de la boucle
+      // déclarations de toutes les variables nécéssaire pour afficher et attribuer leur valeurs dynamiquement
       let id = data[i]._id;
       let name = data[i].name;
       let description = data[i].description;
@@ -16,7 +17,7 @@ function getData(){
       let imageUrl = data[i].imageUrl;
       let altTxt = data[i].altTxt;
 
-      let article = 
+      let article = // <- variable ou l'on ecrit le modèl HTML
         `<a href="./product.html?id=${id}">
           <article>
             <img src="${imageUrl}" alt="${altTxt}" />
@@ -26,14 +27,14 @@ function getData(){
           </article>
         </a>`
 
-      nodeMainHTML.innerHTML += article;
+      nodeMainHTML.innerHTML += article; // Intégration au Html
     }
   })  
-  .catch((err) => {
+  .catch((err) => { // En cas d'erreur on affiche l'erreur sur la console
     alert(err);
   })
 }
-getData();
+getData(); //<- Appel de la fonction getData
 
 
 
