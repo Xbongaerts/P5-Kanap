@@ -4,16 +4,16 @@ const id = parsedUrl.searchParams.get("id");
 
 let nodeMainHTML = document.querySelector(".item__img")
 
-function getData (id){ 
-    fetch("http://localhost:3000/api/products/"+id)
+function getData(id){
+    fetch('http://localhost:3000/api/products/'+id)
     .then((res) => res.json())
-    .then((data) => { 
-
-         //gestion et affichage de l'image
+    .then((data) => {
+        
+        //gestion et affichage de l'image 
         let image = document.getElementsByClassName("item__img");
-        let displayImage = `<img src="${data.imageUrl}" alt ="${data.altTxt}" />`;
+        let displayImage = `<img src="${data.imageUrl}" alt="${data.altTxt}" />`;
         image[0].innerHTML = displayImage;
-      
+
         //gestion et affichage du nom
         let name = document.getElementById('title');
         let nameProduct = document.getElementById('titre');
@@ -32,10 +32,10 @@ function getData (id){
         let colors = document.getElementById('colors');
         for ( colorsOptions of data.colors){
             colors.innerHTML += `<option value="${colorsOptions}"> ${colorsOptions}</option> `;
-        };    
-
+        };
     })
 }
+
 //Gestion du LocalStorage
 
 //Récupération de l'évènement bouton html 
@@ -69,6 +69,7 @@ addToCartButton.addEventListener('click', (event) => {
                 _id: id, 
                 color: productOptions, 
                 quantity: productQuantity
+
             });
             console.log('hors for ', userDataChoose);
         }
@@ -84,4 +85,5 @@ addToCartButton.addEventListener('click', (event) => {
     };
     alert('Article ajouté au panier');
 });
+
 getData(id);
