@@ -11,7 +11,7 @@ let i = 0;
 
 cart.forEach((product, index) => {
     console.log(product._id);
-    let color = product.colors;
+    let color = product.color;
     console.log(color);
     let quantity = product.quantity;
     console.log(quantity);
@@ -252,10 +252,10 @@ cart.forEach((product, index) => {
                     return
                 }
             })
-            .then(console.log("ok"))
+            .then(alert("ok"))
             
             .catch(function(error) {
-                console.log("Une erreur est survenue", error);
+                alert("Une erreur est survenue", error);
             });
         }));
     };
