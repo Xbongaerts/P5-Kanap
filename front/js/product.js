@@ -3,7 +3,7 @@ const parsedUrl = new URL(window.location.href);
 const id = parsedUrl.searchParams.get("id");
 
 let nodeMainHTML = document.querySelector(".item__img")
-
+//fonction allant chercher l'id du produit
 function getData(id){
     fetch('http://localhost:3000/api/products/'+id)
     .then((res) => res.json())
@@ -71,7 +71,6 @@ addToCartButton.addEventListener('click', (event) => {
                 quantity: productQuantity
 
             });
-            console.log('hors for ', userDataChoose);
         }
         localStorage.setItem('produit', JSON.stringify(userDataChoose));
     }else{
@@ -80,10 +79,9 @@ addToCartButton.addEventListener('click', (event) => {
             colors: productOptions, 
             quantity: productQuantity
         }];
-        console.log(userDataChoose);
         localStorage.setItem('produit', JSON.stringify(userDataChoose));
     };
     alert('Article ajouté au panier');
 });
-
+//Appel de la fonction (id)
 getData(id);

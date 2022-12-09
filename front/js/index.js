@@ -2,7 +2,7 @@
 
 let nodeMainHTML = document.querySelector(".items")
 
-//Fonction fetch allant chercher les infos
+//Fonction allant chercher les infos
 function getData(){ 
   fetch("http://localhost:3000/api/products") //<- ici on on vient chercher le data sur le localhost
   .then((res) => res.json())

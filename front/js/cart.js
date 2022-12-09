@@ -1,9 +1,6 @@
 //je récupére les données dans le localStorage
 let cart = JSON.parse(localStorage.getItem('produit')) || [];
 
-//j'affiche le contenu dans la console 
-console.log(cart);
-
 document.getElementById("totalQuantity").innerHTML = 0;
 document.getElementById("totalPrice").innerHTML = 0;
 let i = 0;
@@ -22,7 +19,6 @@ for (i=0; i < cart.length; i++){
         let name = product.name;
         let picture = product.imageUrl;
         let description = product.description;
-        console.log(name, price, color, description);
 
         let displayCart = `
     
@@ -58,13 +54,12 @@ for (i=0; i < cart.length; i++){
         const sumProductPrice = document.getElementById("totalPrice");
         sumProductPrice.innerHTML = parseInt(sumProductPrice.textContent)+price*quantity;
 
-        eventDeleteItem();
-        eventUpdateItem();
+        eventDeleteItem(); // <= fonction qui permet de supprimer un produit
+        eventUpdateItem(); // <= fonction qui permet de modifier la quantité d'un produit
     })
     .catch(function(error){
-        console.log("une erreur est survenue ", error);
     });
-    validUserData();
+    validUserData(); // <= fonction qui permet de valider les infos utilisateurs
 
     function eventDeleteItem(){
         let deleteItems = document.getElementsByClassName('deleteItem');
@@ -77,10 +72,6 @@ for (i=0; i < cart.length; i++){
         deleteItem.addEventListener('click', (event) => {
             let deleteItem = event.target;
 
-            console.log('target', event.target);
-            console.log('target', event.target.id);
-
-            console.log(parseInt(deleteItem.id));
             cart.splice(parseInt(deleteItem.id),1);
 
             localStorage.setItem('produit', JSON.stringify(cart))
@@ -102,7 +93,6 @@ for (i=0; i < cart.length; i++){
             itemQuantity.addEventListener('change', (event => {
 
             const itemQuantity = event.target;
-            console.log(itemQuantity);
             const indexProduct = itemQuantity.id;
             let quantity = itemQuantity.value;
     
@@ -121,7 +111,6 @@ for (i=0; i < cart.length; i++){
             let cart = JSON.parse(localStorage.getItem('produit'));
 
             cart[indexProduct].quantity = parseInt(quantity);
-            console.log(cart);
             localStorage.setItem('produit', JSON.stringify(cart))
             window.location.reload();
             }));
@@ -130,16 +119,15 @@ for (i=0; i < cart.length; i++){
     // Formulaire
     function validUserData() {
         const form = document.querySelector('.cart__order__form');
-        console.log(form);
 
     // console.log(form);
     for (input of form){
 
     //console.log(input);
     input.addEventListener('change', (e) =>{
-        validText();
-        validAddress();
-        validEmail();
+        validText(); // <= fonction pour valider texte (nom, prenom...)
+        validAddress(); // <= fonction pour valider l'Adresse
+        validEmail(); // fonction pour valider l'Email
         })
     };
 }
@@ -259,7 +247,6 @@ function orderProduct(order) {
         })
         //
         .catch(function (err) {
-            console.log(err);
             alert("Veuillez nous excuser, votre commande n'a pas pu être transmise.");
         });
     }
