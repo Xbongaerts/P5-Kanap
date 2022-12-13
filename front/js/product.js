@@ -52,7 +52,7 @@ addToCartButton.addEventListener('click', (event) => {
         alert('Veillez renseigner les informations manquantes');
         return;
     }
-
+    // envoie des produits dans le localstorage.
     let userDataStorage = localStorage.getItem('produit');
     if(userDataStorage){
         let userDataChoose = JSON.parse(userDataStorage);

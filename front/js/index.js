@@ -4,7 +4,7 @@ let nodeMainHTML = document.querySelector(".items")
 
 //Fonction allant chercher les infos
 function getData(){ 
-  fetch("http://localhost:3000/api/products") //<- ici on on vient chercher le data sur le localhost
+  fetch("http://localhost:3000/api/products") //<- ici on on vient chercher le data via l'api sur le localhost
   .then((res) => res.json())
   .then((data) => {
     for(let i = 0; i< data.length; i ++){ // <- lancement de la boucle
@@ -16,7 +16,7 @@ function getData(){
       let imageUrl = data[i].imageUrl;
       let altTxt = data[i].altTxt;
 
-      let article = // <- variable ou l'on ecrit le modèl HTML
+      let article = // <- variable ou l'on ecrit le modèle HTML
         `<a href="./product.html?id=${id}">
           <article>
             <img src="${imageUrl}" alt="${altTxt}" />
