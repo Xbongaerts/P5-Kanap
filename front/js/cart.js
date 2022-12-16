@@ -6,7 +6,7 @@ document.getElementById("totalPrice").innerHTML = 0;
 let i = 0;
 
 for (i=0; i < cart.length; i++){
-    let color = cart[i].color; // erreur corrigé, il manquait un s à color
+    let colors = cart[i].colors; // erreur corrigé, il manquait un s à color
     let quantity = cart[i].quantity;
     
 
@@ -24,7 +24,7 @@ for (i=0; i < cart.length; i++){
 
         let displayCart = `
     
-        <article class="cart__item" data-id="${product._id}" data-color="${product.color}">
+        <article class="cart__item" data-id="${product._id}" data-color="${product.colors}">
     
             <div class="cart__item__img">
                 <img src="${picture}" alt="${description}">
@@ -32,7 +32,7 @@ for (i=0; i < cart.length; i++){
             <div class="cart__item__content">
                 <div class="cart__item__content__description">
                     <h2>${name}</h2>
-                    <p>${color}</p> 
+                    <p>${colors}</p> 
                     <p>${price} €</p>
                 </div>
                 <div class="cart__item__content__settings">
