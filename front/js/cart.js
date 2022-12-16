@@ -98,7 +98,7 @@ for (i=0; i < cart.length; i++){
             const indexProduct = itemQuantity.id;
             let quantity = itemQuantity.value;
     
-            if( quantity <= 0 ){
+            if( quantity <= 0){
                 alert('La quantité doit est strictement comprise entre 1 et100');
     
             quantity=1
