@@ -6,8 +6,10 @@ document.getElementById("totalPrice").innerHTML = 0;
 let i = 0;
 
 for (i=0; i < cart.length; i++){
-    let color = cart[i].colors;
+    let color = cart[i].color; // erreur corrigé, il manquait un s à color
     let quantity = cart[i].quantity;
+    
+
     fetch('http://localhost:3000/api/products/'+cart[i]._id)
     .then(function(response){
         if(response){
@@ -30,7 +32,7 @@ for (i=0; i < cart.length; i++){
             <div class="cart__item__content">
                 <div class="cart__item__content__description">
                     <h2>${name}</h2>
-                    <p>${color}</p>
+                    <p>${color}</p> 
                     <p>${price} €</p>
                 </div>
                 <div class="cart__item__content__settings">
@@ -47,10 +49,10 @@ for (i=0; i < cart.length; i++){
 
         let cartHtmlCode = document.getElementById('cart__items');
         cartHtmlCode.innerHTML += displayCart;
-
+        // total quantité
         const productSum = document.getElementById("totalQuantity");
         productSum.innerHTML = parseInt(productSum.textContent) + quantity;
-
+        // total prix
         const sumProductPrice = document.getElementById("totalPrice");
         sumProductPrice.innerHTML = parseInt(sumProductPrice.textContent)+price*quantity;
 
@@ -107,7 +109,7 @@ for (i=0; i < cart.length; i++){
     
             quantity=100
             }
-
+            // erreur
             let cart = JSON.parse(localStorage.getItem('produit'));
 
             cart[indexProduct].quantity = parseInt(quantity);
@@ -133,7 +135,7 @@ for (i=0; i < cart.length; i++){
 }
 
 function validText() {
-
+    // lettres autorisés pour la validation
     let letterAndSymbols = /^[a-zA-ZÀ-ÄÈ-ÏÑ-ÖÙ-Ýà-äè-öù-ÿ'-\s]+$/;
 
     //Controle Prénom
@@ -242,7 +244,7 @@ function orderProduct(order) {
 
         .then(function (value) {
             window.location =`./confirmation.html?orderId=${value.orderId}`;
-
+            
             localStorage.clear();
         })
         //
